@@ -441,8 +441,9 @@ var resizePizzas = function(size) {
       }
     // created a randomPizzas varible to accomplish DRY 
     var randomPizzas = document.getElementsByClassName("randomPizzaContainer"); // changed querySelectorAll to getElementsByClassName
-
-    for (var i = 0; i < randomPizzas.length; i++) {
+    var pizzaLength = randomPizzas.length; // variable to hold the length of pizzas
+    
+    for (var i = 0; i < pizzaLength; i++) {
       // determineDx has been removed as it's no longer necessary, we are working with percentages
       // taken from the scroll to prevent FSL
       randomPizzas[i].style.width = newWidth + "%";
@@ -495,10 +496,11 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.getElementsByClassName('mover'); // changed from querySelectorAll
+  var itemsLength = items.length; // var to hold the length
   var phase; // phase var is set outside the "for" loop for not creating a new var each time.
   var scrolledTop = document.body.scrollTop / 1250; // moved document.body.scrollTop / 1250 outside the "for" loop and assinged it to a variable scrolledTop to prevent creating the object each time.
 
-  for (var i = 0; i < items.length; i++) {
+  for (var i = 0; i < itemsLength; i++) {
     phase = Math.sin((scrolledTop) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
@@ -520,8 +522,12 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
-    var elem = document.createElement('img');
+  var windowHeight = window.innerHeight; // getting the viewport's height
+  var rows = Math.ceil(windowHeight/s); // here we get the ammount of rows using Math.ceil to round to next integer
+  var pizzaAmount = rows * cols; // here we calculate the amount of pizzas to be shown on background
+  var elem; // moved outside the for loop to prevent constant creation
+  for (var i = 0; i < pizzaAmount; i++) {
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza100h.png";
     elem.style.height = "100px";

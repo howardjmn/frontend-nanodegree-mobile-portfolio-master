@@ -62,10 +62,13 @@ Score of 95 Mobile / 97 Desktop on PageSpeed Insights --> [Here](https://develop
 5. Realized there was a lot of Painting so, decided to put will-change: transform on the .mover class (because it handles the pizza.png images on the background), job done.
 6. Copied pizza.png to pizza100h.png and changed its height to 100px.
 7. Optimized pizza100h.png using the online tool  [Optimizilla](http://optimizilla.com/).
-8. Minifed style.css using grunt-contrib-cssmin plugin.
-9. Optimized style.css delivery by making it to inline CSS in pizza.html.
-10. Minified main.js to main.min.js using grunt-contrib-uglify plugin.
-11. Minified pizza.html using grunt-contrib-htmlmin plugin.
+8. Created variables to hold the length outside "for" loops.
+9. Reduced the number of pizzas to be shown based on the browser's height.
+10. Moved var elem outside the loop, to prevent constant creation.
+11. Minifed style.css using grunt-contrib-cssmin plugin. 
+12. Optimized style.css delivery by making it to inline CSS in pizza.html.
+13. Minified main.js to main.min.js using grunt-contrib-uglify plugin.
+14. Minified pizza.html using grunt-contrib-htmlmin plugin.
 
 #### Other main.js tasks:
 
